@@ -1,3 +1,3 @@
-pub mod Constants;
-pub mod Offsets;
-pub mod Player;
+pub mod constants;
+pub mod offsets;
+pub mod player;
