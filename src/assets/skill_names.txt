@@ -1,49 +1,4 @@
-Sheathing
-Evasion
-Evade Dist
-Bubble
-Guard
-Guard Up
-Guts
-Sense
-Protection
-Hero Shield
-Rec Speed
-Ammo Saver
-Maestro
-Bomb Boost
-Rec Level
-Lasting Pwr
-Wide-Range
-Gluttony
-Eating
-Light Eater
-Carnivore
-Mycology
-Botany
-Combo Rate
-Combo Plus
-Speed Setup
-Heat Res
-Cold Res
-Stamina
-Constitution
-Stam Recov
-Distance Runner
-Team Player
-TeamLeader
-Psychic
-Perception
-Ranger
-Transporter
-Hunger
-Gathering
-Honey
-Charmer
-Whim
-Fate
-Carving
-Capturer
+(None)
 Poison
 Paralysis
 Sleep
@@ -52,6 +7,10 @@ Hearing
 Wind Res
 Tremor Res
 Bind Res
+Heat Res
+Cold Res
+ColdBlooded
+HotBlooded
 Anti-Theft
 Def Lock
 Frenzy Res
@@ -60,14 +19,12 @@ Bleeding
 Blight Res
 Attack
 Defense
-Health
 Fire Res
 Water Res
 Thunder Res
 Ice Res
 Dragon Res
-ColdBlooded
-HotBlooded
+Blight Res
 Fire Atk
 Water Atk
 Thunder Atk
@@ -83,6 +40,7 @@ Grinder
 Blunt
 Crit Draw
 Punish Draw
+Sheathing
 Sheathe Sharpen
 Bladescale
 Reload Spd
@@ -109,6 +67,7 @@ Rapid Fire
 Dead Eye
 Loading
 Haphazard
+Ammo Saver
 Expert
 Tenderizer
 Chain Crit
@@ -117,10 +76,21 @@ Crit Element
 Critical Up
 Negative Crit
 FastCharge
+Stamina
+Constitution
+Stam Recov
+Distance Runner
+Evasion
+Evade Dist
+Bubble
+Guard
+Guard Up
 KO
 Stam Drain
+Maestro
 Artillery
 Destroyer
+Bomb Boost
 Gloves Off
 Spirit
 Unscathed
@@ -130,11 +100,42 @@ Potential
 Survivor
 Furor
 Crisis
+Guts
+Sense
+Team Player
+TeamLeader
 Mounting
 Vault
 Insight
 Endurance
 Prolong SP
+Psychic
+Perception
+Ranger
+Transporter
+Protection
+Hero Shield
+Rec Level
+Rec Speed
+Lasting Pwr
+Wide-Range
+Hunger
+Gluttony
+Eating
+Light Eater
+Carnivore
+Mycology
+Botany
+Combo Rate
+Combo Plus
+Speed Setup
+Gathering
+Honey
+Charmer
+Whim
+Fate
+Carving
+Capturer
 Bherna
 Kokoto
 Pokke
@@ -200,3 +201,6 @@ Avarice
 Anti-Kushala
 Anti-Chameleos
 Anti-Teostra
+Torso Up
+Mystery
+Talisman+
