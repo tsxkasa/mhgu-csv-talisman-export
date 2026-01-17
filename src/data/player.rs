@@ -6,10 +6,10 @@ pub struct Player {
     pub save_offset: usize,
 
     //General Info
-    pub name: &'static str,
+    pub name: String,
     pub play_time: i32,
     pub funds: i32,
-    pub hunter_rank: i32,
+    pub hunter_rank: i16,
 
     //Character Details
     pub voice: Byte,
@@ -41,8 +41,8 @@ pub struct Player {
     pub monster_sizes: [Byte; Constants::SIZEOF_MONSTERSIZES],
 
     //Item Box
-    pub item_id: [Byte; Constants::TOTAL_ITEM_SLOTS],
-    pub item_count: [Byte; Constants::TOTAL_ITEM_SLOTS],
+    pub item_id: [String; Constants::TOTAL_ITEM_SLOTS],
+    pub item_count: [String; Constants::TOTAL_ITEM_SLOTS],
 
     //Equipment Box
     pub equipment_info: [Byte; Constants::SIZEOF_EQUIPBOX],
