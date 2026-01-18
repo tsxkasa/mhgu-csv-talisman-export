@@ -1,32 +1,23 @@
 type Byte = u8;
 
+use std::fs::read;
+
 use crate::data::{constants::Constants, offsets::Offsets, player::Player};
+use crate::utils::bitreader::{self, BitReader};
 
 pub fn populate_player_save(save: &[Byte], slot: i32, player: &mut Player) {
     match slot {
         1 => {
-            let first_slot = format!(
-                "{:02X}{:02X}{:02X}{:02X}",
-                save[0x13], save[0x12], save[0x11], save[0x10]
-            );
             player.save_offset =
-                usize::from_str_radix(first_slot.as_str(), 16).expect("Unknown err");
+                u32::from_be_bytes([save[0x13], save[0x12], save[0x11], save[0x10]]) as usize;
         }
         2 => {
-            let second_slot = format!(
-                "{:02X}{:02X}{:02X}{:02X}",
-                save[0x17], save[0x16], save[0x15], save[0x14]
-            );
             player.save_offset =
-                usize::from_str_radix(second_slot.as_str(), 16).expect("Unknown err");
+                u32::from_be_bytes([save[0x17], save[0x16], save[0x15], save[0x14]]) as usize;
         }
         3 => {
-            let third_slot = format!(
-                "{:02X}{:02X}{:02X}{:02X}",
-                save[0x1B], save[0x1A], save[0x19], save[0x18]
-            );
             player.save_offset =
-                usize::from_str_radix(third_slot.as_str(), 16).expect("Unknown err");
+                u32::from_be_bytes([save[0x1B], save[0x1A], save[0x19], save[0x18]]) as usize;
         }
         _ => {}
     }
@@ -128,16 +119,13 @@ pub fn populate_player_save(save: &[Byte], slot: i32, player: &mut Player) {
         ..current_offset + Offsets::ITEM_BOX_OFFSET + Constants::SIZEOF_ITEMBOX]
         .to_vec();
     item_bytes.reverse();
-    let mut result = String::with_capacity(item_bytes.len() * 8);
-    for b in item_bytes {
-        use std::fmt::Write;
-        write!(result, "{:08b}", b).unwrap();
-    }
-    let mut result = &result[4..result.len() - 4];
-    for i in (0..2999).rev() {
-        player.item_count[i] = i32::from_str_radix(&result[..7], 2).unwrap().to_string();
-        player.item_id[i] = i32::from_str_radix(&result[7..12], 2).unwrap().to_string();
-        result = &result[19..result.len() - 19];
+    let mut reader = BitReader::new(&item_bytes);
+    for i in (0..2299).rev() {
+        let count = reader.read_bits(7);
+        let id = reader.read_bits(12);
+
+        player.item_count[i] = count.to_string();
+        player.item_id[i] = id.to_string();
     }
 
     player.equipment_info = save[current_offset + Offsets::EQUIPMENT_BOX_OFFSET
