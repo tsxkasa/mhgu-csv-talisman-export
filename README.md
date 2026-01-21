@@ -1,5 +1,6 @@
 # mhgu-csv-talisman-export
 auto export dem charms
+cr. Dawnshifter/MHXXSwitchSaveEditor for code I stole from. this is just my rewrite for my own convenience
 ===============
 ### Usage: mhgu-charm-export [OPTIONS] <FILE_PATH>
 ```
