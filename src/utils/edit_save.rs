@@ -2,21 +2,33 @@ use crate::data::{game_constants::GameConstants, player::Player};
 
 use crate::utils::talisman::Talisman;
 
-fn write_talisman_to_save(player: &mut Player, index: usize, t: &Talisman) -> Result<(), i32> {
+fn write_talisman_to_save(
+    player: &mut Player,
+    item_box_index: usize,
+    t: &Talisman,
+) -> Result<(), i32> {
     check_talisman_validity(
         player,
-        index,
+        item_box_index,
         t.slots,
         GameConstants::SKILL_NAMES[t.skill_1],
         t.skill_1_level,
         GameConstants::SKILL_NAMES[t.skill_2],
         t.skill_2_level,
     )?;
-    player.equipment_info[(index * 36) + 16] = t.slots;
-    player.equipment_info[(index * 36) + 12] = t.skill_1 as u8;
-    player.equipment_info[(index * 36) + 14] = t.skill_1_level as u8;
-    player.equipment_info[(index * 36) + 13] = t.skill_2 as u8;
-    player.equipment_info[(index * 36) + 15] = t.skill_2_level as u8;
+    player.equipment_info[(item_box_index * 36) + 16] = t.slots;
+    player.equipment_info[(item_box_index * 36) + 12] = t.skill_1 as u8;
+    player.equipment_info[(item_box_index * 36) + 14] = t.skill_1_level as u8;
+    player.equipment_info[(item_box_index * 36) + 13] = t.skill_2 as u8;
+    player.equipment_info[(item_box_index * 36) + 15] = t.skill_2_level as u8;
+    player.equipment_info[(item_box_index * 36) + 17] = 0;
+    player.equipment_info[(item_box_index * 36) + 18] = GameConstants::TALISMAN_RARITY
+        [player.equipment_info[(item_box_index * 36) + 2] as usize]
+        as u8;
+    player.equipment_info[(item_box_index * 36) + 19] = 1;
+    for i in 20..36 {
+        player.equipment_info[(item_box_index * 36) + i] = 0;
+    }
     Ok(())
 }
 
