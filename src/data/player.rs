@@ -2,6 +2,7 @@ use crate::data::constants::Constants;
 
 type Byte = u8;
 
+#[derive(Clone)]
 pub struct Player {
     pub save_offset: usize,
 

@@ -1,5 +1,5 @@
-use crate::data::{game_constants::GameConstants, player::Player};
-use clap::{Parser, command};
+use crate::data::player::Player;
+use clap::Parser;
 use std::path::PathBuf;
 use std::process;
 
@@ -20,6 +20,11 @@ struct Args {
     slot: Option<i32>,
 }
 
+/*
+ * 42 = wrong save size
+ * 43 = no save exist at given slot
+ * 44 = no save exist at all
+ */
 fn main() {
     let args = Args::parse();
 
@@ -60,5 +65,5 @@ fn main() {
     }
 
     utils::deserialize::populate_player_save(&save_file, slot, &mut player);
-    utils::exporter::export_talisman(&player, &path).ok();
+    utils::exporter::export_talisman_to_csv(&player, &path).ok();
 }
