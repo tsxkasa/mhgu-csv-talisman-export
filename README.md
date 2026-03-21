@@ -1,5 +1,6 @@
 # mhgu-csv-talisman-export
 auto export dem charms
+the export should work on https://mhxx.wiki-db.com/sim/?hl=en (skill names matches)
 
 - cr. Dawnshifter/MHXXSwitchSaveEditor for code I stole from. this is just my rewrite for my own convenience
 ===============
